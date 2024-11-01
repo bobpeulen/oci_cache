@@ -24,7 +24,7 @@ Connect with Python
 Test with Python
 ```
 python3
-- import redis
-- r = redis.Redis(host='aaaeicj2tiavwiftrvoi22hfqc7encrzjwgwt4vbe5etwbbmhbwjsia-p.redis.us-ashburn-1.oci.oraclecloud.com', port=6379, ssl=True)
-- r.set('testx', 'textxxx')
+import redis
+r = redis.Redis(host='aaaeicj2tiavwiftrvoi22hfqc7encrzjwgwt4vbe5etwbbmhbwjsia-p.redis.us-ashburn-1.oci.oraclecloud.com', port=6379, ssl=True)
+r.set('testx', 'textxxx')
 ```
