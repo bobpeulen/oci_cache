@@ -28,3 +28,4 @@ import redis
 r = redis.Redis(host='aaaeicj2tiavwiftrvoi22hfqc7encrzjwgwt4vbe5etwbbmhbwjsia-p.redis.us-ashburn-1.oci.oraclecloud.com', port=6379, ssl=True)
 r.set('testx', 'textxxx')
 ```
+https://redis.io/docs/latest/develop/connect/clients/python/redis-py/
