@@ -20,8 +20,9 @@ sudo dnf install nodejs -y
 sudo npm i -g redis-cli
 ```
 
+# Connect to cluster
 ```
-rdcli
+rdcli --tls -h [Endpoint]
 ```
 
 
