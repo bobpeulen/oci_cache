@@ -37,6 +37,7 @@ sudo systemctl start docker
 ```
 sudo docker run --network host \
     -e SYNC=true \
+    -e tls=true \
     -e SHAKE_SRC_ADDRESS=aaaeicj2tiaqtv65bofxw33pbz3wm45obua5dwtzol76o7zrx6dpaaq-p.redis.eu-frankfurt-1.oci.oraclecloud.com:6379 \
     -e SHAKE_DST_ADDRESS=aaaeicj2tiagiy4q3mxc6l5nufrc7nud3ldrflcjta5ce2zje4om33q-p.redis.eu-amsterdam-1.oci.oraclecloud.com:6379 \
     ghcr.io/tair-opensource/redisshake:latest
@@ -45,7 +46,7 @@ sudo docker run --network host \
 
 
 - Open Redis ports, .. networking?
-
+```
 sudo firewall-cmd --permanent --add-port=8080/tcp
 sudo firewall-cmd --reload 
-
+```
