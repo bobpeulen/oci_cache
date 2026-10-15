@@ -1,0 +1,17 @@
+[Unit]
+Description=Cross Court ping pong %i application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=opc
+WorkingDirectory=/opt/pingpong
+ExecStart=/opt/pingpong/.venv/bin/python -m %i_app.app
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

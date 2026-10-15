@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cross Court · {{ 'Game' if role == 'main' else 'Spectator' }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='dashboard.js') }}" defer></script>
+</head>
+<body data-role="{{ role }}">
+  <main>
+    <header><a class="brand" href="/">◉ CROSS COURT</a><span class="badge">{{ region }} / {{ 'Publisher' if role == 'main' else 'Spectator' }}</span></header>
+    <section class="intro"><p class="eyebrow">OCI CACHE · VALKEY PUB/SUB</p>
+      <h1>{{ 'Let the game play.' if role == 'main' else 'Every point. From here.' }}</h1>
+      <p>{{ 'An automatic ping pong match, broadcast across regions.' if role == 'main' else 'Live statistics from the match in Frankfurt.' }}</p>
+    </section>
+    <div class="connection"><span id="indicator"></span><span id="status">Connecting to application…</span><span id="age">Waiting for the first event</span></div>
+    <section class="scoreboard" aria-label="Scoreboard">
+      <div class="player"><span class="eyebrow">PLAYER 01</span><h2 id="player0">Ada</h2><strong id="score0">—</strong></div>
+      <div class="match"><span id="match">MATCH —</span><span class="versus">VS</span><span id="phase">First to 11 · win by 2</span></div>
+      <div class="player blue"><span class="eyebrow">PLAYER 02</span><h2 id="player1">Linus</h2><strong id="score1">—</strong></div>
+    </section>
+    {% if role == 'main' %}
+    <section class="court-wrap"><canvas id="court" width="960" height="400" aria-label="Automatic ping pong game"></canvas><span class="court-label">AUTOPLAY / NO INPUT NEEDED</span></section>
+    {% endif %}
+    <p id="last-event" class="last-event" aria-live="polite">Waiting for game data…</p>
+    <section class="metrics" aria-label="Game statistics">
+      <article><span>Current rally</span><strong id="rally">—</strong><small>consecutive returns</small></article>
+      <article><span>Longest rally</span><strong id="longest">—</strong><small>this session</small></article>
+      <article><span>Total points</span><strong id="points">—</strong><small id="point-split">Ada / Linus</small></article>
+      <article><span>Matches won</span><strong id="wins">—</strong><small>Ada / Linus</small></article>
+    </section>
+    <section class="transport"><div><p class="eyebrow">DELIVERY</p><h3 id="source">Waiting for data</h3></div><dl><div><dt>Event sequence</dt><dd id="sequence">—</dd></div><div><dt>Paddle returns</dt><dd id="hits">—</dd></div><div><dt>Published at</dt><dd id="published">—</dd></div></dl></section>
+    <footer>Frankfurt → OCI Cache replication → Amsterdam<span>Channel: {{ channel }}</span></footer>
+  </main>
+</body>
+</html>
